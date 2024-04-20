@@ -1,0 +1,5 @@
+omni_base_simulation/omni_base_multi
+/home/mgs09/tiago_public_ws/devel/.private/omni_base_multi/cmake.lock /home/mgs09/tiago_public_ws/devel/./cmake.lock
+/home/mgs09/tiago_public_ws/devel/.private/omni_base_multi/share/omni_base_multi/cmake/omni_base_multiConfig-version.cmake /home/mgs09/tiago_public_ws/devel/share/omni_base_multi/cmake/omni_base_multiConfig-version.cmake
+/home/mgs09/tiago_public_ws/devel/.private/omni_base_multi/share/omni_base_multi/cmake/omni_base_multiConfig.cmake /home/mgs09/tiago_public_ws/devel/share/omni_base_multi/cmake/omni_base_multiConfig.cmake
+/home/mgs09/tiago_public_ws/devel/.private/omni_base_multi/lib/pkgconfig/omni_base_multi.pc /home/mgs09/tiago_public_ws/devel/lib/pkgconfig/omni_base_multi.pc

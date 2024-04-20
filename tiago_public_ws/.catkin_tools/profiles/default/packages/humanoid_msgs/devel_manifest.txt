@@ -1,0 +1,2 @@
+humanoid_msgs/humanoid_msgs
+/home/mgs09/tiago_public_ws/devel/.private/humanoid_msgs/cmake.lock /home/mgs09/tiago_public_ws/devel/./cmake.lock

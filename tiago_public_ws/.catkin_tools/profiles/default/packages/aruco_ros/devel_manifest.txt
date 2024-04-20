@@ -1,0 +1,16 @@
+aruco_ros/aruco_ros
+/home/mgs09/tiago_public_ws/devel/.private/aruco_ros/cmake.lock /home/mgs09/tiago_public_ws/devel/./cmake.lock
+/home/mgs09/tiago_public_ws/devel/.private/aruco_ros/share/aruco_ros/cmake/aruco_rosConfig-version.cmake /home/mgs09/tiago_public_ws/devel/share/aruco_ros/cmake/aruco_rosConfig-version.cmake
+/home/mgs09/tiago_public_ws/devel/.private/aruco_ros/share/aruco_ros/cmake/aruco_rosConfig.cmake /home/mgs09/tiago_public_ws/devel/share/aruco_ros/cmake/aruco_rosConfig.cmake
+/home/mgs09/tiago_public_ws/devel/.private/aruco_ros/share/aruco_ros/docs/ArucoThresholdConfig.dox /home/mgs09/tiago_public_ws/devel/share/aruco_ros/docs/ArucoThresholdConfig.dox
+/home/mgs09/tiago_public_ws/devel/.private/aruco_ros/share/aruco_ros/docs/ArucoThresholdConfig-usage.dox /home/mgs09/tiago_public_ws/devel/share/aruco_ros/docs/ArucoThresholdConfig-usage.dox
+/home/mgs09/tiago_public_ws/devel/.private/aruco_ros/share/aruco_ros/docs/ArucoThresholdConfig.wikidoc /home/mgs09/tiago_public_ws/devel/share/aruco_ros/docs/ArucoThresholdConfig.wikidoc
+/home/mgs09/tiago_public_ws/devel/.private/aruco_ros/include/aruco_ros/ArucoThresholdConfig.h /home/mgs09/tiago_public_ws/devel/include/aruco_ros/ArucoThresholdConfig.h
+/home/mgs09/tiago_public_ws/devel/.private/aruco_ros/lib/libaruco_ros_utils.so /home/mgs09/tiago_public_ws/devel/lib/libaruco_ros_utils.so
+/home/mgs09/tiago_public_ws/devel/.private/aruco_ros/lib/python3/dist-packages/aruco_ros/__init__.py /home/mgs09/tiago_public_ws/devel/lib/python3/dist-packages/aruco_ros/__init__.py
+/home/mgs09/tiago_public_ws/devel/.private/aruco_ros/lib/python3/dist-packages/aruco_ros/cfg/__init__.py /home/mgs09/tiago_public_ws/devel/lib/python3/dist-packages/aruco_ros/cfg/__init__.py
+/home/mgs09/tiago_public_ws/devel/.private/aruco_ros/lib/python3/dist-packages/aruco_ros/cfg/ArucoThresholdConfig.py /home/mgs09/tiago_public_ws/devel/lib/python3/dist-packages/aruco_ros/cfg/ArucoThresholdConfig.py
+/home/mgs09/tiago_public_ws/devel/.private/aruco_ros/lib/aruco_ros/single /home/mgs09/tiago_public_ws/devel/lib/aruco_ros/single
+/home/mgs09/tiago_public_ws/devel/.private/aruco_ros/lib/aruco_ros/marker_publisher /home/mgs09/tiago_public_ws/devel/lib/aruco_ros/marker_publisher
+/home/mgs09/tiago_public_ws/devel/.private/aruco_ros/lib/aruco_ros/double /home/mgs09/tiago_public_ws/devel/lib/aruco_ros/double
+/home/mgs09/tiago_public_ws/devel/.private/aruco_ros/lib/pkgconfig/aruco_ros.pc /home/mgs09/tiago_public_ws/devel/lib/pkgconfig/aruco_ros.pc

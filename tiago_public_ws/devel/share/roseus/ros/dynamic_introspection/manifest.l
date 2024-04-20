@@ -1,0 +1,1 @@
+/home/mgs09/tiago_public_ws/devel/.private/dynamic_introspection/share/roseus/ros/dynamic_introspection/manifest.l

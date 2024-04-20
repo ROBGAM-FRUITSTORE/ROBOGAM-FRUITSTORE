@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package>
+  <name>fruitstore_nav</name>
+  <version>0.1.0</version>
+  <description>Custom navigation setup for the TiaGo robot in a fruit store environment.</description>
+  <maintainer email="1909073@upy.edu.mx">Marco González</maintainer>
+  <license>Modified BSD</license>
+  <author email="1909073@upy.edu.mx">Marco González</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <run_depend>tiago_gazebo</run_depend>
+  <run_depend>tiago_2dnav</run_depend>
+  <run_depend>move_base</run_depend>
+  <run_depend>rviz</run_depend>
+  <run_depend>map_server</run_depend>
+</package>

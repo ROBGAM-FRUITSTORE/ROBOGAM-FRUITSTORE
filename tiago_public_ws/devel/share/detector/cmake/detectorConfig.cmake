@@ -1,0 +1,1 @@
+/home/mgs09/tiago_public_ws/devel/.private/detector/share/detector/cmake/detectorConfig.cmake

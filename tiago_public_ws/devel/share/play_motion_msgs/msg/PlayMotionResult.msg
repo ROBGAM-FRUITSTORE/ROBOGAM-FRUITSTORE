@@ -1,0 +1,1 @@
+/home/mgs09/tiago_public_ws/devel/.private/play_motion_msgs/share/play_motion_msgs/msg/PlayMotionResult.msg

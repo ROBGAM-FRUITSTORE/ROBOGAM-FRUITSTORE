@@ -1,0 +1,2 @@
+ros_controllers/ros_controllers
+/home/mgs09/tiago_public_ws/devel/.private/ros_controllers/cmake.lock /home/mgs09/tiago_public_ws/devel/./cmake.lock

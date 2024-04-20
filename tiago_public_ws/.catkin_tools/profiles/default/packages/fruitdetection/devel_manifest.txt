@@ -1,0 +1,7 @@
+fruitdetection
+/home/mgs09/tiago_public_ws/devel/.private/fruitdetection/cmake.lock /home/mgs09/tiago_public_ws/devel/./cmake.lock
+/home/mgs09/tiago_public_ws/devel/.private/fruitdetection/share/fruitdetection/cmake/fruitdetectionConfig.cmake /home/mgs09/tiago_public_ws/devel/share/fruitdetection/cmake/fruitdetectionConfig.cmake
+/home/mgs09/tiago_public_ws/devel/.private/fruitdetection/share/fruitdetection/cmake/fruitdetectionConfig-version.cmake /home/mgs09/tiago_public_ws/devel/share/fruitdetection/cmake/fruitdetectionConfig-version.cmake
+/home/mgs09/tiago_public_ws/devel/.private/fruitdetection/lib/fruitdetection/cmake.lock /home/mgs09/tiago_public_ws/devel/lib/fruitdetection/cmake.lock
+/home/mgs09/tiago_public_ws/devel/.private/fruitdetection/lib/fruitdetection/fruitdetection.py /home/mgs09/tiago_public_ws/devel/lib/fruitdetection/fruitdetection.py
+/home/mgs09/tiago_public_ws/devel/.private/fruitdetection/lib/pkgconfig/fruitdetection.pc /home/mgs09/tiago_public_ws/devel/lib/pkgconfig/fruitdetection.pc

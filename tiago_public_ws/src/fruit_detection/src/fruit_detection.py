@@ -1,0 +1,208 @@
+#!/usr/bin/env python
+
+"""
+Fruit Detection Node for TIAGo Simulation in Gazebo
+Author: Marco Gonzalez
+
+To test the application launch
+    $ rosrun fruit_detection fruit_detection
+
+Click on image pixels to make TIAGo look towards that direction
+"""
+import sys
+import numpy as np
+
+# ROS Libraries
+import rospy
+from sensor_msgs.msg import CameraInfo, Image
+from geometry_msgs.msg import PointStamped
+from actionlib import SimpleActionClient
+from control_msgs.msg import PointHeadAction, PointHeadGoal
+
+# OpenCV Libraries
+import cv2
+from cv_bridge import CvBridge, CvBridgeError
+
+#-----------------------------------------------------------------------------------------------------#
+windowName = "TIAGO's Cam"
+cameraFrame = "/xtion_rgb_optical_frame"
+imageTopic = "/xtion/rgb/image_raw"
+cameraInfoTopic = "/xtion/rgb/camera_info"
+
+# Camera's intrinsic parameters
+cameraIntrinsics = None
+
+# Our action interface type for moving TIAGo's head
+class PointHeadClient(SimpleActionClient):
+    def __init__(self, name, *args, **kwargs):
+        super(PointHeadClient, self).__init__(name, PointHeadAction, *args, **kwargs)
+
+pointHeadClient = PointHeadClient("/tiago_head_controller/point_head_action")
+
+# The timestamp of the most recent image
+latestImageStamp = None
+#-----------------------------------------------------------------------------------------------------#
+# Initialize CvBridge
+bridge = CvBridge()
+
+def hex_to_hsv(hex_color):
+    """Converts a hex color to HSV color space."""
+    hex_color = hex_color.lstrip('#')
+    rgb_color = tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+    hsv_color = cv2.cvtColor(np.array([[rgb_color]], dtype=np.uint8), cv2.COLOR_RGB2HSV)[0][0]
+    return hsv_color
+    
+def create_color_ranges(base_colors, variation=5):
+    """Create a dictionary with color ranges for each fruit."""
+    color_ranges = {}
+    for fruit, hex_color in base_colors.items():
+        base_hsv = hex_to_hsv(hex_color)
+        lower_bound = np.array([max(0, base_hsv[0] - variation), 50, 50])
+        upper_bound = np.array([min(179, base_hsv[0] + variation), 255, 255])
+        color_ranges[fruit] = (lower_bound, upper_bound)
+    return color_ranges
+
+# Base colors for fruits in Hexadecimal
+base_colors = {
+    "apple": "620E18",
+    "avocado": "101205",
+    "guava": "42401E",
+    "mango": "866B32",
+    "orange": "583214",
+    "peach": "854D35",
+    "pear": "464022",
+    "pitahaya": "431223",
+    "pomegranate": "680B0B",
+    "tomate": "D24C2E",
+}
+fruit_colors = create_color_ranges(base_colors, variation=2)
+
+def does_overlap(box1, box2):
+    x1, y1, w1, h1 = box1
+    x2, y2, w2, h2 = box2
+    if x1 < x2 + w2 and x1 + w1 > x2 and y1 < y2 + h2 and y1 + h1 > y2:
+        return True
+    return False
+
+def update_or_add_box(new_box, label):
+    for idx, (box, _) in enumerate(detected_boxes):
+        if does_overlap(box, new_box):
+            detected_boxes[idx] = (new_box, label)
+            return
+    detected_boxes.append((new_box, label))
+
+def image_callback(img_msg):
+    global latestImageStamp, detected_boxes
+    latestImageStamp = img_msg.header.stamp
+    detected_boxes = []  # Reiniciar la lista de bounding boxes detectados para cada imagen
+
+    try:
+        cv_image = bridge.imgmsg_to_cv2(img_msg, "bgr8")
+        hsv_image = cv2.cvtColor(cv_image, cv2.COLOR_BGR2HSV)
+        
+        for fruit, (lower, upper) in fruit_colors.items():
+            mask = cv2.inRange(hsv_image, lower, upper)
+            contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            
+            for contour in contours:
+                if cv2.contourArea(contour) > 100:  # Ajustable basado en la simulación
+                    x, y, w, h = cv2.boundingRect(contour)
+                    update_or_add_box((x, y, w, h), fruit)
+
+        for (x, y, w, h), fruit in detected_boxes:
+            cv2.rectangle(cv_image, (x, y), (x+w, y+h), (0, 255, 255), 2)
+            cv2.putText(cv_image, fruit, (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 255), 2)
+        
+        cv2.imshow(windowName, cv_image)
+        cv2.waitKey(15)
+    except CvBridgeError as e:
+        rospy.logerr(f"CvBridge Error: {e}")
+
+def on_mouse(event, u, v, flags, param):
+    global cameraIntrinsics, pointHeadClient, latestImageStamp, cameraFrame
+
+    if event != cv2.EVENT_LBUTTONDOWN:
+        return
+
+    rospy.loginfo(f"Pixel selected ({u}, {v}) Making TIAGo look in that direction")
+
+    pointStamped = PointStamped()
+    pointStamped.header.frame_id = cameraFrame
+    pointStamped.header.stamp = rospy.Time.now()
+
+    # Compute normalized pixel coordinates of the selected pixel
+    x = (u - cameraIntrinsics[0,2]) / cameraIntrinsics[0,0]
+    y = (v - cameraIntrinsics[1,2]) / cameraIntrinsics[1,1]
+    Z = 1.0
+    pointStamped.point.x = x * Z
+    pointStamped.point.y = y * Z
+    pointStamped.point.z = Z
+
+    goal = PointHeadGoal()
+    goal.pointing_frame = cameraFrame
+    goal.pointing_axis.x = 0.0
+    goal.pointing_axis.y = 0.0
+    goal.pointing_axis.z = 1.0
+    goal.min_duration = rospy.Duration(1.0)
+    goal.max_velocity = 0.25
+    goal.target = pointStamped
+
+    pointHeadClient.send_goal(goal)
+    rospy.sleep(0.5)
+
+def create_point_head_client():
+    rospy.loginfo("Creating action client to head controller ...")
+
+    action_client = SimpleActionClient("/head_controller/point_head_action", PointHeadAction)
+
+    iterations = 0
+    max_iterations = 3
+    while not action_client.wait_for_server(rospy.Duration(2.0)) and not rospy.is_shutdown() and iterations < max_iterations:
+        rospy.logdebug("Waiting for the point_head_action server to come up")
+        iterations += 1
+
+    if iterations == max_iterations:
+        rospy.logerr("Error in create_point_head_client: head controller action server not available")
+        sys.exit(1)
+
+    return action_client
+
+def get_camera_intrinsics(camera_info_topic):
+    global cameraIntrinsics
+    rospy.loginfo("Waiting for camera intrinsics...")
+    msg = rospy.wait_for_message(camera_info_topic, CameraInfo, timeout=10.0)
+    
+    if msg is not None:
+        cameraIntrinsics = np.zeros((3, 3), dtype=np.float64)
+        cameraIntrinsics[0, 0] = msg.K[0]
+        cameraIntrinsics[1, 1] = msg.K[4]
+        cameraIntrinsics[0, 2] = msg.K[2]
+        cameraIntrinsics[1, 2] = msg.K[5]
+        cameraIntrinsics[2, 2] = 1
+    else:
+        rospy.logfatal("Timed-out waiting for camera intrinsics.")
+        sys.exit(1)
+
+if __name__ == '__main__':
+    rospy.init_node('fruit_detection', anonymous=True)
+    rospy.loginfo("Starting fruit_detection application...")
+
+    if not rospy.wait_for_message("/clock", rospy.msg.AnyMsg, timeout=10.0):
+        rospy.logfatal("Timed-out waiting for valid time.")
+        sys.exit(1)
+
+    camera_intrinsics = get_camera_intrinsics(cameraInfoTopic)
+    pointHeadClient = create_point_head_client()
+
+    cv2.namedWindow(windowName, cv2.WINDOW_AUTOSIZE)
+    cv2.setMouseCallback(windowName, on_mouse)
+
+    rospy.Subscriber(imageTopic, Image, image_callback)
+    rospy.loginfo(f"Subscribing to {imageTopic} ...")
+
+    try:
+        rospy.spin()
+    except KeyboardInterrupt:
+        print("Shutting down")
+    cv2.destroyAllWindows()
+

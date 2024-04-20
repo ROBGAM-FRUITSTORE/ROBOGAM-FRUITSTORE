@@ -1,0 +1,2 @@
+gazebo_ros_pkgs/gazebo_ros_pkgs
+/home/mgs09/tiago_public_ws/devel/.private/gazebo_ros_pkgs/cmake.lock /home/mgs09/tiago_public_ws/devel/./cmake.lock

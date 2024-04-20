@@ -1,0 +1,13 @@
+ros_controllers/diff_drive_controller
+/home/mgs09/tiago_public_ws/devel/.private/diff_drive_controller/cmake.lock /home/mgs09/tiago_public_ws/devel/./cmake.lock
+/home/mgs09/tiago_public_ws/devel/.private/diff_drive_controller/share/diff_drive_controller/cmake/diff_drive_controllerConfig.cmake /home/mgs09/tiago_public_ws/devel/share/diff_drive_controller/cmake/diff_drive_controllerConfig.cmake
+/home/mgs09/tiago_public_ws/devel/.private/diff_drive_controller/share/diff_drive_controller/cmake/diff_drive_controllerConfig-version.cmake /home/mgs09/tiago_public_ws/devel/share/diff_drive_controller/cmake/diff_drive_controllerConfig-version.cmake
+/home/mgs09/tiago_public_ws/devel/.private/diff_drive_controller/share/diff_drive_controller/docs/DiffDriveControllerConfig.wikidoc /home/mgs09/tiago_public_ws/devel/share/diff_drive_controller/docs/DiffDriveControllerConfig.wikidoc
+/home/mgs09/tiago_public_ws/devel/.private/diff_drive_controller/share/diff_drive_controller/docs/DiffDriveControllerConfig.dox /home/mgs09/tiago_public_ws/devel/share/diff_drive_controller/docs/DiffDriveControllerConfig.dox
+/home/mgs09/tiago_public_ws/devel/.private/diff_drive_controller/share/diff_drive_controller/docs/DiffDriveControllerConfig-usage.dox /home/mgs09/tiago_public_ws/devel/share/diff_drive_controller/docs/DiffDriveControllerConfig-usage.dox
+/home/mgs09/tiago_public_ws/devel/.private/diff_drive_controller/include/diff_drive_controller/DiffDriveControllerConfig.h /home/mgs09/tiago_public_ws/devel/include/diff_drive_controller/DiffDriveControllerConfig.h
+/home/mgs09/tiago_public_ws/devel/.private/diff_drive_controller/lib/libdiff_drive_controller.so /home/mgs09/tiago_public_ws/devel/lib/libdiff_drive_controller.so
+/home/mgs09/tiago_public_ws/devel/.private/diff_drive_controller/lib/python3/dist-packages/diff_drive_controller/__init__.py /home/mgs09/tiago_public_ws/devel/lib/python3/dist-packages/diff_drive_controller/__init__.py
+/home/mgs09/tiago_public_ws/devel/.private/diff_drive_controller/lib/python3/dist-packages/diff_drive_controller/cfg/__init__.py /home/mgs09/tiago_public_ws/devel/lib/python3/dist-packages/diff_drive_controller/cfg/__init__.py
+/home/mgs09/tiago_public_ws/devel/.private/diff_drive_controller/lib/python3/dist-packages/diff_drive_controller/cfg/DiffDriveControllerConfig.py /home/mgs09/tiago_public_ws/devel/lib/python3/dist-packages/diff_drive_controller/cfg/DiffDriveControllerConfig.py
+/home/mgs09/tiago_public_ws/devel/.private/diff_drive_controller/lib/pkgconfig/diff_drive_controller.pc /home/mgs09/tiago_public_ws/devel/lib/pkgconfig/diff_drive_controller.pc

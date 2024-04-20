@@ -1,0 +1,2 @@
+pal_msgs/pal_msgs
+/home/mgs09/tiago_public_ws/devel/.private/pal_msgs/cmake.lock /home/mgs09/tiago_public_ws/devel/./cmake.lock

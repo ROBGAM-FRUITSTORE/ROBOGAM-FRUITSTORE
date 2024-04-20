@@ -1,0 +1,1 @@
+/home/mgs09/tiago_public_ws/devel/.private/fruit_detection/share/fruit_detection/cmake/fruit_detectionConfig-version.cmake

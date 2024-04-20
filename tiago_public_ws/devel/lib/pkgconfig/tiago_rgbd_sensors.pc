@@ -1,0 +1,1 @@
+/home/mgs09/tiago_public_ws/devel/.private/tiago_rgbd_sensors/lib/pkgconfig/tiago_rgbd_sensors.pc

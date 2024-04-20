@@ -1,0 +1,5 @@
+fruitstore_nav
+/home/mgs09/tiago_public_ws/devel/.private/fruitstore_nav/cmake.lock /home/mgs09/tiago_public_ws/devel/./cmake.lock
+/home/mgs09/tiago_public_ws/devel/.private/fruitstore_nav/share/fruitstore_nav/cmake/fruitstore_navConfig.cmake /home/mgs09/tiago_public_ws/devel/share/fruitstore_nav/cmake/fruitstore_navConfig.cmake
+/home/mgs09/tiago_public_ws/devel/.private/fruitstore_nav/share/fruitstore_nav/cmake/fruitstore_navConfig-version.cmake /home/mgs09/tiago_public_ws/devel/share/fruitstore_nav/cmake/fruitstore_navConfig-version.cmake
+/home/mgs09/tiago_public_ws/devel/.private/fruitstore_nav/lib/pkgconfig/fruitstore_nav.pc /home/mgs09/tiago_public_ws/devel/lib/pkgconfig/fruitstore_nav.pc

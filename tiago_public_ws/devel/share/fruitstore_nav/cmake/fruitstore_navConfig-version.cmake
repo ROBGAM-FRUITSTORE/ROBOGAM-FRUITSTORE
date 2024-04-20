@@ -1,0 +1,1 @@
+/home/mgs09/tiago_public_ws/devel/.private/fruitstore_nav/share/fruitstore_nav/cmake/fruitstore_navConfig-version.cmake
